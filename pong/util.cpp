@@ -1,9 +1,11 @@
+#include "stdafx.h"
 #include "util.h"
 
 
-void drawMidLine() {
-	for (int i = 0; i < WINDOW_HEIGHT / 100; i++) {
-		sf::RectangleShape line(sf::Vector2f(100, 5));
-		line.setPosition(i * 100, WINDOW_WIDTH / 2);
+void util::drawMidLine() {
+	for (double i = 0.135; i < WINDOW_HEIGHT / 50; i++) {
+		sf::RectangleShape line(sf::Vector2f(4, 50));
+		line.setPosition(WINDOW_WIDTH / 2 + 2, i * 100);
+		window.draw(line);
 	}
 }
