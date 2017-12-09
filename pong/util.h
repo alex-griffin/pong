@@ -8,5 +8,5 @@ namespace util
 {
 
 	void drawMidLine();
-
+	float random(float, float);
 }
