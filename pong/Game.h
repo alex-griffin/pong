@@ -14,8 +14,12 @@ private:
 	Player player2; 
 	Ball ball;
 
+
 public:
+
 	Game();
 	void render();
+	void update();
+
 };
 

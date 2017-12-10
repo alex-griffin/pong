@@ -24,3 +24,9 @@ void Game::render() {
 	player2.update();
 	ball.update();
 }
+
+void Game::update() {
+	if (ball.pos.x) {
+
+	}
+}

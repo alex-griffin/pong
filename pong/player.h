@@ -11,7 +11,8 @@
 
 class Player
 {
-private:
+friend Game;
+protected:
 	int x;
 	int y;
 	sf::Vector2f textPos;
@@ -20,8 +21,6 @@ private:
 	sf::Keyboard::Key upKey;
 	sf::RectangleShape paddle;
 	
-	friend class Game;
-
 public:
 	Player(int xPos,
 				 sf::Keyboard::Key up,

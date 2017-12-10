@@ -5,8 +5,8 @@
 
 class Ball
 {
-
-private: 
+friend Game;
+protected: 
 	sf::Vector2f pos;
 	sf::Vector2f vel;
 	sf::CircleShape shape;
