@@ -13,6 +13,8 @@ private:
 	Player player1; 
 	Player player2; 
 	Ball ball;
+	int state;
+	std::string winner;		
 
 
 public:
@@ -20,6 +22,10 @@ public:
 	Game();
 	void render();
 	void update();
+	void revertBall(sf::Vector2f initVel);
+	void endGame();
+	void drawMidLine();
 
+	int getState();
 };
 

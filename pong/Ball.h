@@ -5,18 +5,16 @@
 
 class Ball
 {
-friend Game;
-protected: 
-	sf::Vector2f pos;
-	sf::Vector2f vel;
-	sf::CircleShape shape;
+	friend class Game;
+	protected:
+		sf::Vector2f pos;
+		sf::Vector2f vel;
+		sf::CircleShape shape;
 	
-public:
-	Ball(int, int, int);
+	public:
+		Ball(int, int, int);
 
-	void setVel(sf::Vector2f);
-
-	void update();
-	void render();
+		void update();
+		void render();
 };
 

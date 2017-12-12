@@ -27,13 +27,6 @@ void Player::update()
 	y += sf::Keyboard::isKeyPressed(upKey)   && y > 0                             ? -1 :
 		   sf::Keyboard::isKeyPressed(downKey) && y < WINDOW_HEIGHT - PADDLE_HEIGHT ?  1 : 0;
 	
-	
-	// remove this when you put in score
-	pts += sf::Keyboard::isKeyPressed(upKey) && y > 0 ? -1 :
-		sf::Keyboard::isKeyPressed(downKey) && y < WINDOW_HEIGHT - PADDLE_HEIGHT ? 1 : 0;
-
-	
-	render();
 	paddle.setPosition(x, y);
 
 }

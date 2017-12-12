@@ -11,7 +11,8 @@
 
 class Player
 {
-friend Game;
+friend class Game;
+
 protected:
 	int x;
 	int y;

@@ -17,18 +17,8 @@ void Ball::render() {
 	window.draw(shape);
 }
 
-void Ball::setVel(sf::Vector2f vec) {
-	vel = vec;
-}
 
 void Ball::update() {
-	if (pos.x > WINDOW_WIDTH) {
-		vel.x = util::random(MIN_DIFFICULTY, MAX_DIFFICULTY) * -abs(vel.x);
-	}
-	else if (pos.x < 0) {
-		vel.x = util::random(MIN_DIFFICULTY, MAX_DIFFICULTY) * abs(vel.x);
-	}
-
 	if (pos.y > WINDOW_HEIGHT) {
 		vel.y = util::random(MIN_DIFFICULTY, MAX_DIFFICULTY) * -abs(vel.y);
 	}
@@ -38,5 +28,4 @@ void Ball::update() {
 	shape.setPosition(pos);
 
 	pos += vel;
-	render();
 }
