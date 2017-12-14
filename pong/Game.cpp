@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Game.h"
-
 #include <iostream>
 
 Game::Game() : 
@@ -21,18 +20,17 @@ void Game::drawMidLine() {
 	for (double i = 0.135; i < WINDOW_HEIGHT / 50; i++) {
 		sf::RectangleShape line(sf::Vector2f(4, 50));
 		line.setPosition(WINDOW_WIDTH / 2 + 2, i * 100);
+		line.setFillColor(sf::Color::Cyan);
 		window.draw(line);
 	}
 }
 
-
-
 void Game::render() 
 {
-	drawMidLine();
 	player1.render();
 	player2.render();
 	ball.render();
+	drawMidLine();
 }
 
 void Game::revertBall(sf::Vector2f initVel) 
@@ -40,28 +38,24 @@ void Game::revertBall(sf::Vector2f initVel)
 	ball.pos.x = WINDOW_WIDTH / 2;
 	ball.pos.y = WINDOW_HEIGHT / 2;
 
-	ball.vel.x = initVel.x;
-	ball.vel.y = initVel.y;
-
+	ball.vel = initVel;
 }
 
 void Game::endGame()
 {
-	render();
 	sf::RectangleShape win(sf::Vector2f(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2));
 	
 	win.setPosition(WINDOW_WIDTH / 4, WINDOW_HEIGHT / 4);
 	win.setOutlineThickness(5);
-	win.setFillColor(sf::Color::Black);
-
-
+	win.setFillColor(sf::Color::Magenta);
+	
 	sf::Text txt;
 	txt.setFont(font);
 	txt.setString(winner + " Wins!");
 	sf::FloatRect bounds = txt.getLocalBounds();
 	txt.setPosition(WINDOW_WIDTH / 2 - bounds.width / 2, WINDOW_HEIGHT / 2 - bounds.height / 2);
-
-
+	
+	render();
 	window.draw(win);	
 	window.draw(txt);
 
