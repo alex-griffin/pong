@@ -14,8 +14,7 @@ class Player
 friend class Game;
 
 protected:
-	int x;
-	int y;
+	sf::Vector2f pos;
 	sf::Vector2f textPos;
 	int pts;
 	sf::Keyboard::Key downKey;

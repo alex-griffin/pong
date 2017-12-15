@@ -7,4 +7,5 @@
 namespace util 
 {
 	float random(float, float);
+	bool  intersects(sf::CircleShape, sf::RectangleShape);
 }

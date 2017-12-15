@@ -20,7 +20,7 @@ void Game::drawMidLine() {
 	for (double i = 0.135; i < WINDOW_HEIGHT / 50; i++) {
 		sf::RectangleShape line(sf::Vector2f(4, 50));
 		line.setPosition(WINDOW_WIDTH / 2 + 2, i * 100);
-		line.setFillColor(sf::Color::Cyan);
+		line.setFillColor(sf::Color::White);
 		window.draw(line);
 	}
 }
@@ -47,7 +47,7 @@ void Game::endGame()
 	
 	win.setPosition(WINDOW_WIDTH / 4, WINDOW_HEIGHT / 4);
 	win.setOutlineThickness(5);
-	win.setFillColor(sf::Color::Magenta);
+	win.setFillColor(sf::Color::Black);
 	
 	sf::Text txt;
 	txt.setFont(font);
@@ -93,6 +93,15 @@ void Game::update() {
 			revertBall(sf::Vector2f(1, util::random(-1, 1)));
 		}
 	}
+
+	if (util::intersects(ball.shape, player1.paddle)) {
+		ball.vel.x =  abs(ball.vel.x);
+	}
+	if (util::intersects(ball.shape, player2.paddle)) {
+		ball.vel.x = -abs(ball.vel.x);
+	}
+
+	render();
 
 	player1.update();
 	player2.update();

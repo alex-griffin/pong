@@ -2,21 +2,19 @@
 #include "player.h"
 
 
-Player::Player(int xPos,
+Player::Player(int x,
 			 				 sf::Keyboard::Key up,
 				 			 sf::Keyboard::Key down,
 			 				 sf::Vector2f rectSize, 
-							 sf::Vector2f tPos)
+							 sf::Vector2f tPos) :
+	pos(x, WINDOW_HEIGHT / 2)
 {
-	x = xPos;
-	y = WINDOW_HEIGHT / 2;
-	
 	upKey = up;
 	downKey = down;
 	
 	paddle.setSize(rectSize);
 	paddle.setFillColor(sf::Color(255, 255, 255));
-	paddle.setPosition(x, y);
+	paddle.setPosition(pos.x, pos.y);
 
 	textPos.x = tPos.x;
 	textPos.y = tPos.y;
@@ -24,10 +22,10 @@ Player::Player(int xPos,
 
 void Player::update()
 {
-	y += sf::Keyboard::isKeyPressed(upKey)   && y > 0                             ? -1 :
-		   sf::Keyboard::isKeyPressed(downKey) && y < WINDOW_HEIGHT - PADDLE_HEIGHT ?  1 : 0;
+	pos.y += sf::Keyboard::isKeyPressed(upKey)   && pos.y > 0                             ? -1 :
+		   sf::Keyboard::isKeyPressed(downKey) && pos.y < WINDOW_HEIGHT - PADDLE_HEIGHT ?  1 : 0;
 	
-	paddle.setPosition(x, y);
+	paddle.setPosition(pos.x, pos.y);
 
 }
 
