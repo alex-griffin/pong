@@ -54,7 +54,7 @@ void Game::endGame()
 	txt.setFont(font);
 	txt.setString(winner + " Wins!");
 	sf::FloatRect boundstxt = txt.getLocalBounds();
-	txt.setPosition(WINDOW_WIDTH / 2 - boundstxt.width / 2, WINDOW_HEIGHT / 2 - boundstxt.height / 2);
+	txt.setPosition(WINDOW_WIDTH / 2 - boundstxt.width / 2, WINDOW_HEIGHT / 2 - boundstxt.height);
 	
 	sf::Text spa;
 	spa.setFont(font);
