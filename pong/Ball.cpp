@@ -2,8 +2,7 @@
 #include "Ball.h"
 #include "util.h"
 
-#define MIN_DIFFICULTY 1.001
-#define MAX_DIFFICULTY 1.01
+
 
 
 Ball::Ball(int x, int y, int r) :
@@ -11,6 +10,8 @@ Ball::Ball(int x, int y, int r) :
 	vel(0, 0),
 	shape(r)
 {
+	shape.setOrigin(r, r);
+
 }
 
 void Ball::render() {
@@ -19,10 +20,10 @@ void Ball::render() {
 
 
 void Ball::update() {
-	if (pos.y > WINDOW_HEIGHT) {
+	if (pos.y + shape.getRadius() > WINDOW_HEIGHT) {
 		vel.y = util::random(MIN_DIFFICULTY, MAX_DIFFICULTY) * -abs(vel.y);
 	}
-	else if (pos.y < 0) {
+	else if (pos.y - shape.getRadius() < 0) {
 		vel.y = util::random(MIN_DIFFICULTY, MAX_DIFFICULTY) * abs(vel.y);
 	}
 	shape.setPosition(pos);

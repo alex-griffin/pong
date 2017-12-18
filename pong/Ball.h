@@ -3,6 +3,9 @@
 #include <SFML/system/Vector2.hpp>
 #include "pong.h"
 
+#define MIN_DIFFICULTY 1.01
+#define MAX_DIFFICULTY 1.1
+
 class Ball
 {
 	friend class Game;

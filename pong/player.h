@@ -16,11 +16,12 @@ friend class Game;
 protected:
 	sf::Vector2f pos;
 	sf::Vector2f textPos;
-	int pts;
+	sf::Vector2f defaultPos;
 	sf::Keyboard::Key downKey;
 	sf::Keyboard::Key upKey;
 	sf::RectangleShape paddle;
-	
+	int pts;
+
 public:
 	Player(int xPos,
 				 sf::Keyboard::Key up,

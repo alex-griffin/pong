@@ -7,6 +7,14 @@
 #include "util.h"
 #include "pong.h"
 
+#define GAME_STATE_PLAYING 0
+#define GAME_STATE_START   1
+#define GAME_STATE_ENDED   2
+
+#define WIN_PTS 10
+
+
+
 class Game
 {
 private:
@@ -24,8 +32,9 @@ public:
 	void update();
 	void revertBall(sf::Vector2f initVel);
 	void endGame();
+	void preGame(); 
+	void startGame();
 	void drawMidLine();
-
 	int getState();
 };
 

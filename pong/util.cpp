@@ -9,22 +9,17 @@ float util::random(float min, float max) {
 
 bool util::intersects(sf::CircleShape circle, sf::RectangleShape rect)
 {
-	/*sf::Vector2f circleDistance(abs(circle.getPosition().x - rect.getPosition().x),
-															abs(circle.getPosition().y - rect.getPosition().y));
 
-	if (circleDistance.x > (rect.getSize().x / 2 + circle.getRadius())) { return false; }
-	if (circleDistance.y > (rect.getSize().y / 2 + circle.getRadius())) { return false; }
-
-	if (circleDistance.x <= (rect.getSize().x / 2)) { return true; }
-	if (circleDistance.y <= (rect.getSize().y / 2)) { return true; }
-
-	float cornerDistance_sq = ((circleDistance.x - rect.getSize().x / 2) * (circleDistance.x - rect.getSize().x / 2)) +
-		(circleDistance.y - rect.getSize().y / 2) * (circleDistance.y - rect.getSize().y / 2);
-
-	return (cornerDistance_sq <= (circle.getRadius() * circle.getRadius()));*/
-
-
-	if (rect.getPoint()) {
-
+	if ((circle.getPosition().y > rect.getPosition().y && 
+			 circle.getPosition().y < rect.getPosition().y + rect.getSize().y) && 
+		 ((circle.getPosition().x + circle.getRadius() < rect.getPosition().x &&
+			 circle.getPosition().x - circle.getRadius() > rect.getPosition().x + rect.getSize().x) ||
+			(circle.getPosition().x + circle.getRadius() > rect.getPosition().x &&
+			 circle.getPosition().x - circle.getRadius() < rect.getPosition().x + rect.getSize().x)))
+	{
+		return true;
 	}
+
+	return false;
+
 }

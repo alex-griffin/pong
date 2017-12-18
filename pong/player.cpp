@@ -7,7 +7,9 @@ Player::Player(int x,
 				 			 sf::Keyboard::Key down,
 			 				 sf::Vector2f rectSize, 
 							 sf::Vector2f tPos) :
-	pos(x, WINDOW_HEIGHT / 2)
+	pos(x, WINDOW_HEIGHT / 2),
+	defaultPos(x, WINDOW_HEIGHT / 2)
+
 {
 	upKey = up;
 	downKey = down;
