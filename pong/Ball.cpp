@@ -19,14 +19,17 @@ void Ball::render() {
 }
 
 
-void Ball::update() {
-	if (pos.y + shape.getRadius() > WINDOW_HEIGHT) {
-		vel.y = util::random(MIN_DIFFICULTY, MAX_DIFFICULTY) * -abs(vel.y);
-	}
-	else if (pos.y - shape.getRadius() < 0) {
-		vel.y = util::random(MIN_DIFFICULTY, MAX_DIFFICULTY) * abs(vel.y);
-	}
+bool Ball::update() {
 	shape.setPosition(pos);
 
 	pos += vel;
+	if (pos.y + shape.getRadius() > WINDOW_HEIGHT) {
+		vel.y = util::random(MIN_DIFFICULTY, MAX_DIFFICULTY) * -abs(vel.y);
+		return true;
+	}
+	else if (pos.y - shape.getRadius() < 0) {
+		vel.y = util::random(MIN_DIFFICULTY, MAX_DIFFICULTY) * abs(vel.y);
+		return true;
+	}
+	return false;
 }

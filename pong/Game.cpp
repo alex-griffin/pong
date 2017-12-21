@@ -8,7 +8,9 @@ player2(WINDOW_WIDTH - 20, sf::Keyboard::Up, sf::Keyboard::Down, sf::Vector2f(PA
 ball(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 10),
 state(GAME_STATE_START)
 {
-	if (!font.loadFromFile("RobotoMono.ttf")) 
+	if (!font.loadFromFile("RobotoMono.ttf") || 
+			!bounceBuffer.loadFromFile("bounce.wav") ||
+			!scoreBuffer.loadFromFile("score.wav")) 
 	{
 		// TODO: make an error thingy
 	}
@@ -110,10 +112,13 @@ void Game::update() {
 	if (ball.pos.x > WINDOW_WIDTH) 
 	{
 		player1.pts++;
+		sound.setBuffer(scoreBuffer);
+		sound.play();
 		if (player1.pts >= WIN_PTS) 
 		{
 			winner = "Player 1";
 			state = GAME_STATE_ENDED;
+			
 		}
 		else 
 		{
@@ -122,6 +127,8 @@ void Game::update() {
 	} 
 	else if (ball.pos.x < 0) 
 	{
+		sound.setBuffer(scoreBuffer);
+		sound.play();
 		player2.pts++;
 		if (player2.pts >= WIN_PTS)
 		{
@@ -136,15 +143,21 @@ void Game::update() {
 
 	if (util::intersects(ball.shape, player1.paddle)) {
 		ball.vel = sf::Vector2f( abs(ball.vel.x), util::random(ball.vel.y - 0.2, ball.vel.y + 0.2));
-	}
-	if (util::intersects(ball.shape, player2.paddle)) {
+		sound.setBuffer(bounceBuffer);
+		sound.play();
+	} else if (util::intersects(ball.shape, player2.paddle)) {
 		ball.vel = sf::Vector2f(-abs(ball.vel.x), util::random(ball.vel.y - 0.2, ball.vel.y + 0.2));
+		sound.setBuffer(bounceBuffer);
+		sound.play();
 	}
 
 	render();
 
 	player1.update();
 	player2.update();
-	ball.update();
 
+	if (ball.update()) {
+		sound.setBuffer(bounceBuffer);
+		sound.play();
+	}
 }

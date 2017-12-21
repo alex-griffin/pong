@@ -17,7 +17,7 @@ class Ball
 	public:
 		Ball(int, int, int);
 
-		void update();
+		bool update();
 		void render();
 };
 

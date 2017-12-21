@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Vector2.hpp>
+#include <SFML/Audio.hpp>
+
 #include "player.h"
 #include "Ball.h"
 #include "util.h"
@@ -23,7 +25,9 @@ private:
 	Ball ball;
 	int state;
 	std::string winner;		
-
+	sf::SoundBuffer bounceBuffer;
+	sf::SoundBuffer scoreBuffer;
+	sf::Sound sound;
 
 public:
 
